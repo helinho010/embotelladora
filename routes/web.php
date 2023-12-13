@@ -15,14 +15,19 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::get('/vue', function () {
-    return view('layouts/app');
+Route::get('/home2', function () {
+    return view('index2');
 });
 
-Auth::routes();
+// Route::get('/vue', function () {
+//     return view('layouts/app');
+// });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

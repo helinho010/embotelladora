@@ -31,6 +31,7 @@
                 'resources/css/sb-admin-2.css',
                 'resources/js/sb-admin-2.js',
             ])
+        @yield('import_vite')
     </head>
     
     <body id="page-top">
@@ -426,8 +427,7 @@
         </a>
     
         <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        {{-- <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -443,7 +443,29 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
+
+
+        <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="logoutModalLabel">¿Esta seguro de cerrar sesion?</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Seleccione "Cerrar sesión" a continuación si está listo para finalizar su sesión actual.
+                    <form action="{{ route('logout') }}" method="post" id="cerrarSession">
+                        @csrf
+                    </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                  <button type="button" class="btn btn-primary" onclick="cerrarSession()">Salir</button>
+                </div>
+              </div>
+            </div>
+          </div>
     
         <!-- Bootstrap core JavaScript-->
         {{-- <script src="vendor/jquery/jquery.min.js"></script>
@@ -462,6 +484,12 @@
         {{-- <script src="js/demo/chart-area-demo.js"></script>
         <script src="js/demo/chart-pie-demo.js"></script> --}}
     
+        <script>
+            function cerrarSession() 
+            {
+                document.getElementById("cerrarSession").submit();    
+            }
+        </script>
     </body>
     
     </html>

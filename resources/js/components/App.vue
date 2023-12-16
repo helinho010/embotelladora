@@ -65,6 +65,68 @@
 
 <script>
 
+export default {
+        data(){
+            return{
+                pagination:{
+                    'total' :0,
+                    'current_page':0,
+                    'per_page':0,
+                    'last_page':0,
+                    'from':0,
+                    'to':0
+                },
+                longitud:0,
+                latitud:0,                
+            }
+
+        },
+        computed:{
+            
+            sicompleto(){
+                let me=this;
+                if (me.nombrealmacen!='' && me.direccion!='' && me.departamento!=0 && me.ciudad!='')
+                    return true;
+                else
+                    return false;
+            },
+        },
+        methods :{
+
+            caracteresPermitidosTelefono(ex){
+                let me=this;
+                if(ex.keyCode==32 || ex.keyCode==43 || ex.keyCode==8 || ex.keyCode == 45 || (ex.keyCode >= 48 && ex.keyCode <= 57) )
+                {
+                    me.telefono = me.telefono+ex.key;
+                } 
+            },  
+
+            selectDepartamentos(){
+                let me=this;
+                var url='/depto/selectdepto';
+                axios.get(url).then(function(response){
+                    var respuesta=response.data;
+                    me.arrayDepto=respuesta;
+                })
+                .catch(function(error){
+                    error401(error);
+                    console.log(error);
+                });
+            },
+
+            selectAll: function (event) {
+                setTimeout(function () {
+                    event.target.select()
+                }, 0)
+            },
+
+        },
+
+        mounted() {
+            //this.selectRubros();
+        }
+    }
+
 </script>
 
 

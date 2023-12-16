@@ -1,5 +1,9 @@
 @extends('templete.templete')
 
+@section('import_vite')
+@vite(['resources/js/importVue.js'])
+@endsection
+
 @section('contenido')
 <!-- Content Column -->
 <div class="col-lg-6 mb-4">

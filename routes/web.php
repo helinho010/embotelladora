@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
-
+use App\Http\Controllers\GrupoController;
+use App\Http\Controllers\ClienteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,5 +22,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware'=>'auth'],function(){
+    
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/obtenerFechaActual', [App\Http\Controllers\HomeController::class, 'fecha_hora']);
+
+
+    // Rutas Grupo
+    Route::get('/listarGrupos', [GrupoController::class, 'listarGrupos']);
+
+
+    // Rutas Cliente
+    Route::get('/listarClientes', [ClienteController::class, 'listarClientes']);
+    Route::get('/crearCliente', function () {
+        return view('registrarCliente');
+    })->name('crearCliente');
+    Route::post('/crearCliente', [ClienteController::class, 'crearCliente']);
+});
 

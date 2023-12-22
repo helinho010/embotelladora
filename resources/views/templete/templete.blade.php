@@ -9,7 +9,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-
+        {{-- se agrego esta etiqueta meta por ngrok --}}
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+        {{-- fin ngrok --}}
+        
         <title>Agua Freesh</title>
 
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -24,8 +27,8 @@
                 'resources/css/app.css',
                 'resources/js/app.js',
                 'resources/vendor/jquery/jquery.min.js',
-                'resources/vendor/bootstrap/js/bootstrap.bundle.min.js',
                 'resources/vendor/jquery-easing/jquery.easing.min.js',
+                'resources/vendor/bootstrap/js/bootstrap.bundle.min.js',
                 'resources/vendor/chart.js/Chart.min.js',
                 'resources/vendor/fontawesome-free/css/all.min.css',
                 'resources/css/sb-admin-2.css',
@@ -43,7 +46,7 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ asset('/')}}">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('home')}}">
                     <div class="sidebar-brand-icon">
                         <i class="fas fa-tint"></i>
                     </div>
@@ -81,7 +84,7 @@
                     <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-primary py-2 collapse-inner rounded">
                             <h6 class="collapse-header" style="color: aliceblue">Clientes:</h6>
-                            <a class="collapse-item" href="#" style="color: aliceblue;"><i class="fas fa-plus"></i> Cliente</a>
+                            <a class="collapse-item" href="{{ route('crearCliente') }}" style="color: aliceblue;"><i class="fas fa-plus"></i> Cliente</a>
                         </div>
                     </div>
                 </li>

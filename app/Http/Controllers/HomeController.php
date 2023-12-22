@@ -24,7 +24,11 @@ class HomeController extends Controller
     public function index()
     {
         // return view('home');
-        return view('index2');
+        return view('mapaClientes');
 
+    }
+
+    public function fecha_hora(){
+        return date("Y/m/d H:i");
     }
 }

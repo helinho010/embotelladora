@@ -16,7 +16,7 @@ export default defineConfig({
                 'resources/vendor/fontawesome-free/css/all.min.css',
                 'resources/css/sb-admin-2.css',
                 'resources/js/sb-admin-2.js',
-                'resources/js/importVue.js'
+                'resources/js/importVue.js',
             ],
             refresh: true,
         }),
